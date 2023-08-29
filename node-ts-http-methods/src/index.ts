@@ -10,7 +10,7 @@ server.use(express.json());
 server.get("/", (request: Request, response: Response) => {
   return response.status(200).json({ message: "DioBank API" });
 });
-
+server.get("/user", userController.getAllUsers);
 server.post("/user", userController.createUser);
 
 server.listen(5000, () => console.log("Server started!"));
