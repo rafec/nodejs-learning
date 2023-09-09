@@ -11,10 +11,10 @@ export class UserController {
   createUser = (request: Request, response: Response) => {
     const user = request.body;
 
-    if (!user.name) {
+    if (!user.name || !user.email) {
       return response
         .status(400)
-        .json({ message: "Bad request! Invalid name!" });
+        .json({ message: "Bad request! Invalid credentials!" });
     }
 
     this.userService.createUser(user.name, user.email);
@@ -25,5 +25,11 @@ export class UserController {
     const users = this.userService.getAllUsers();
 
     return response.status(200).json(users);
+  };
+
+  deleteUser = (request: Request, response: Response) => {
+    const user = request.body;
+    console.log("Deleting user: ", user);
+    return response.status(200).json({ message: "User deleted!" });
   };
 }
