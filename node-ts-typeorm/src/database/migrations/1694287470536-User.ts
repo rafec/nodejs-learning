@@ -11,6 +11,22 @@ export class User1694287470536 implements MigrationInterface {
             type: "string",
             isPrimary: true,
           },
+          {
+            name: "name",
+            type: "string",
+            isNullable: false,
+          },
+          {
+            name: "email",
+            type: "string",
+            isNullable: false,
+            isUnique: true,
+          },
+          {
+            name: "password",
+            type: "string",
+            isNullable: false,
+          },
         ],
       })
     );
